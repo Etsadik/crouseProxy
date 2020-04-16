@@ -17,15 +17,17 @@ const Reviews = 'http://18.220.138.231:3000';
 
 
 // Reservations
-
 app.all('/reservations', (req, res) => {
   console.log('redirecting to Reservations Server');
   apiProxy.web(req, res, { target: Reservations });
 });
 
+app.all('/reservations/:restaurantId/:partySize', (req, res) => {
+    console.log('redirecting to Reservations Server');
+    apiProxy.web(req, res, { target: Reservations });
+});
 
 // Reviews
-
 app.all('/restaurants/:restaurantId/reviews', (req, res) => {
   console.log('redirecting to server 2');
   apiProxy.web(req, res, { target: Reviews });
